@@ -568,6 +568,8 @@ class Game {
             // the game's ktahbjects array
             // [!] this.addAt
             // ???
+            this.wall = new Wall(r, c, this);
+            this.addAt(this.wall, r, c);
             break;
         }
       }
