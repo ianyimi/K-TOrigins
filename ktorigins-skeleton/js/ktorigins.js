@@ -308,18 +308,19 @@ class Player extends Ktahbject{
   getEaten () {
     // TODO reduce this player's health property by the amount
     // decided in the game instance's playerDamage property
-    // ???
+    this.health -= activeGame.playerDamage;
 
     // TODO update the health bar with the percentage of the player's
     // remaining health, out of a maximum 100
     // [!] updateHealth(percentage)
-    // ???
+    updateHealth(this.health/100);
 
     // TODO if the player's health is <= 0, then have the game end
     // in defeat
-    // if (???) {
-    //   [!] See Game class methods for how to end the game!
-    // }
+    if (this.health <= 0) {
+      //   [!] See Game class methods for how to end the game!
+      end();
+     }
   }
 
   /*
