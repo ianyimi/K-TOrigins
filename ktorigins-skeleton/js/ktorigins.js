@@ -265,15 +265,15 @@ class Ktahbject {
     // the target is an empty location; if it is, then
     // we can move to the requested spot; if it isn't, then
     // do nothing!
-    // if ( ??? ) {
-          //Uncomment and leave the following two lines as-is:
-          //this.game.addAt(this, row, col);
-          //this.game.eraseAt(this, this.r, this.c);
+    if ( target === "." ) {
+          // Uncomment and leave the following two lines as-is:
+          this.game.addAt(this, row, col);
+          this.game.eraseAt(this, this.r, this.c);
 
           //TODO set this ktahbject's r to row and c to col
-          //???
-          //???
-     //}
+          ktahbject.r = row;
+          ktahbject.c = col;
+     }
   }
 }
 
