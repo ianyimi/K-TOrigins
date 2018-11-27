@@ -189,9 +189,10 @@ function removePlayerKeys () {
 // Configure the game initialization
 function initGame (config) {
   beginGameLoad();
+  setTimeout(endGameLoad, 3000);
   activeGame = new Game(config);
   activeP5 = new p5(setupP5, "game-maze");
-  endGameLoad();
+
 };
 
 // Configure the launch button below:
@@ -546,11 +547,11 @@ class Game {
             // within the game's player property
             // ???
 
-            let player = new Player(ktahbjectRow, ktahbjectCol, this);
+            //[let player = new Player(ktahbjectRow, ktahbjectCol, this);]
             // TODO add that newly created player object to the
             // ktahbjects array
             // [!] this.addAt
-            this.addAt(player, ktahbjectRow, ktahbjectCol);
+            //[this.addAt(player, ktahbjectRow, ktahbjectCol);]
             break;
           case "Z":
             // TODO Create a new Zombie instance and push it into
