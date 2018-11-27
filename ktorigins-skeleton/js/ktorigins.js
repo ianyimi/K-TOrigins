@@ -265,16 +265,6 @@ class Ktahbject {
     // the target is an empty location; if it is, then
     // we can move to the requested spot; if it isn't, then
     // do nothing!
-<<<<<<< HEAD
-    if ( target === "." ) {
-          // Uncomment and leave the following two lines as-is:
-          this.game.addAt(this, row, col);
-          this.game.eraseAt(this, this.r, this.c);
-
-          //TODO set this ktahbject's r to row and c to col
-          ktahbject.r = row;
-          ktahbject.c = col;
-=======
     if (target === ".") {
       //Uncomment and leave the following two lines as-is:
       this.game.addAt(this, row, col);
@@ -283,7 +273,6 @@ class Ktahbject {
       //TODO set this ktahbject's r to row and c to col
       ktahbject.r = row;
       ktahbject.c = col;
->>>>>>> c81264a65926df208c00f226670031c3d926295c
      }
   }
 }
