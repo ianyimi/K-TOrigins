@@ -287,10 +287,9 @@ class Ktahbject {
 // TODO Change the Player class definition to inherit from Ktahbject
 class Player extends Ktahbject{
   constructor (r, c, game) {
-    super(r, c, game);//NEEDS FIX
     // TODO Since Player is a subclass of Ktahbject, call the superclass'
     // constructor with the same parameters here:
-    // ???
+    super(r, c, game);//NEEDS FIX
 
     // Leave these lines as-is:
     this.asset = this.character = this.game.character;
