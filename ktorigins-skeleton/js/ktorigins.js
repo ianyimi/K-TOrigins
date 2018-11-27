@@ -256,7 +256,7 @@ class Ktahbject {
     // We'll use the facing property when a player uses
     // their ability, and that ability must occur in a given
     // direction compared to where they're facing
-
+        // this.facing = {r: , c: };
 
     // TODO Only move if the spot is open; check to see if
     // the target is an empty location; if it is, then
@@ -543,10 +543,11 @@ class Game {
             // TODO Create a new Player instance and save it
             // within the game's player property
             // ???
-
+            let player = new Player(ktahbjectRow, ktahbjectCol, this);
             // TODO add that newly created player object to the
             // ktahbjects array
             // [!] this.addAt
+            this.addAt(player, ktahbjectRow, ktahbjectCol);
             break;
           case "Z":
             // TODO Create a new Zombie instance and push it into
