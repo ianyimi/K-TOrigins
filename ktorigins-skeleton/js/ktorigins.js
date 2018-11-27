@@ -375,11 +375,11 @@ class Player extends Ktahbject{
 // ---------------------------------------------------
 
 // TODO Change the Zombie class definition to inherit from Ktahbject
-class Zombie {
+class Zombie extends Ktahbject{
   constructor (r, c, game) {
     // TODO Since Zombie is a subclass of Ktahbject, call the superclass'
     // constructor with the same parameters here:
-    // ???
+    super(r, c, game)
 
     // Leave this line as-is:
     this.asset = "zombie";
@@ -439,7 +439,7 @@ class Zombie {
 // ---------------------------------------------------
 
 // TODO Change the Wall class definition to inherit from Ktahbject
-class Wall {
+class Wall extends Ktahbject{
   // [!] Below, permanent is an *optional* parameter, meaning
   // that it will have the value given (true) if the user does
   // not specify it, otherwise, it attains the value of an
@@ -448,7 +448,7 @@ class Wall {
   constructor (r, c, game, permanent = true) {
     // TODO Since Wall extends Ktahbject, call the superclass'
     // constructor with the same parameters here:
-    // ???
+    super(r, c, game)
 
     // TODO: If the wall is NOT permanent (i.e., was made
     // by the architect) set its health to 5 here
@@ -546,13 +546,12 @@ class Game {
 
             // TODO Create a new Player instance and save it
             // within the game's player property
-            // ???
+            this.player = new Player(r, c, this);
 
-            //[let player = new Player(ktahbjectRow, ktahbjectCol, this);]
             // TODO add that newly created player object to the
             // ktahbjects array
             // [!] this.addAt
-            //[this.addAt(player, ktahbjectRow, ktahbjectCol);]
+            this.addAt(this.player, r, c);
             break;
           case "Z":
             // TODO Create a new Zombie instance and push it into
