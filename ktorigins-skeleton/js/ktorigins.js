@@ -570,6 +570,7 @@ class Game {
             // ???
             this.wall = new Wall(r, c, this);
             this.addAt(this.wall, r, c);
+            // working
             break;
         }
       }
