@@ -559,6 +559,8 @@ class Game {
             // [!] this.addAt
             // [!] this.nZoms
             // ???
+            this.zombie = new Zombie(r, c, this);
+            this.addAt(this.zombie, r, c);
             this.nZoms++;
             break;
           case "X":
