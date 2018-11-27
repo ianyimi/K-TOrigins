@@ -546,9 +546,11 @@ class Game {
             // within the game's player property
             // ???
 
+            let player = new Player(ktahbjectRow, ktahbjectCol, this);
             // TODO add that newly created player object to the
             // ktahbjects array
             // [!] this.addAt
+            this.addAt(player, ktahbjectRow, ktahbjectCol);
             break;
           case "Z":
             // TODO Create a new Zombie instance and push it into
