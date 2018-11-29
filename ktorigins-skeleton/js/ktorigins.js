@@ -308,7 +308,7 @@ class Player extends Ktahbject{
   getEaten () {
     // TODO reduce this player's health property by the amount
     // decided in the game instance's playerDamage property
-    this.health -= activeGame.playerDamage;
+    this.health -= this.game.playerDamage;
 
     // TODO update the health bar with the percentage of the player's
     // remaining health, out of a maximum 100
@@ -338,17 +338,17 @@ class Player extends Ktahbject{
 
           // TODO if there's nothing in objsAtLoc, then it's clear and
           // ready to have a wall placed in it!
-          // if ( ??? )
+          //if (objsAtLoc.length === 0) {
             // TODO create a new Wall object at the given wallLoc
-            // let newWall = new Wall( ??? );
+            //let newWall = new Wall(wallLoc.r, WallLoc.c, this.game);
 
             // TODO add the newWall to the game's ktahbjects:
             // [!] this.game.ktahbjects
             // ???
 
             // Uncomment, then leave this line as-is:
-            // triggerCooldown = true;
-          // }
+            //triggerCooldown = true;
+          //}
           break;
       }
     }
@@ -426,7 +426,7 @@ class Zombie extends Ktahbject{
     // reach here, then we know the Player is not adjacent to the
     // Zombie, and it is still alive, so move it to the location
     // we made in toMoveTo above
-    // [!] this.moveTo
+    this.moveTo(toMoveTo.r, toMoveTo.c);
     // ???
   }
 }
