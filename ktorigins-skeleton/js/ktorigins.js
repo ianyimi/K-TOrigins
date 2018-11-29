@@ -189,7 +189,7 @@ function removePlayerKeys () {
 // Configure the game initialization
 function initGame (config) {
   beginGameLoad();
-  setTimeout(endGameLoad, 3000);
+  setTimeout(endGameLoad, 1500);
   activeGame = new Game(config);
   activeP5 = new p5(setupP5, "game-maze");
 
@@ -244,9 +244,9 @@ class Ktahbject {
     // TODO Create a variable called target that gets the
     // object(s) at the requested row, col
     // [!] see Game's getKtahbjectsAt method
-    let target = getKtahbjectsAt(row, col);
+    let target = this.game.getKtahbjectsAt(row, col);
 
-    this.facing = {r: this.row-this.r,c: this.col-this.c};
+    this.facing = {r: row-this.r,c: col-this.c};
 
     // TODO set a property called facing on this object
     // that is an object with 2 properties: r and c
@@ -265,15 +265,15 @@ class Ktahbject {
     // the target is an empty location; if it is, then
     // we can move to the requested spot; if it isn't, then
     // do nothing!
-    if (target === ".") {
+    if (target.length === 0) {
       //Uncomment and leave the following two lines as-is:
       this.game.addAt(this, row, col);
       this.game.eraseAt(this, this.r, this.c);
 
       //TODO set this ktahbject's r to row and c to col
-      ktahbject.r = row;
-      ktahbject.c = col;
-     }
+      this.r = row;
+      this.c = col;
+    }
   }
 }
 
