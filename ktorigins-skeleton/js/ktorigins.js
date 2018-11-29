@@ -289,7 +289,7 @@ class Player extends Ktahbject{
   constructor (r, c, game) {
     // TODO Since Player is a subclass of Ktahbject, call the superclass'
     // constructor with the same parameters here:
-    super(r, c, game);//NEEDS FIX
+    super(r, c, game);
 
     // Leave these lines as-is:
     this.asset = this.character = this.game.character;
