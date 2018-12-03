@@ -319,7 +319,7 @@ class Player extends Ktahbject{
     // in defeat
     if (this.health <= 0) {
       //   [!] See Game class methods for how to end the game!
-      end();
+      this.game.end();
      }
   }
 
@@ -401,7 +401,7 @@ class Zombie extends Ktahbject{
       // If this Zombie is dead, then remove it from the game,
       // and then return from this function
       // [!] this.game.eraseAt
-      // ???
+      this.game.eraseAt(this, this.r, this.c)
     }
 
     let r = this.r,
@@ -420,7 +420,9 @@ class Zombie extends Ktahbject{
     // [!] this.game.player
     // [!] this.game.player.getEaten
     // [!] activeP5.dist  // p5's dist method!
-    // ??? (this will be an if statement with stuff inside)
+    if (activeP5.dist(r, c, this.game.player.r, this.game.player.c) <= 1) {
+      this.game.player.getEaten();
+    }
 
     // TODO Satisfy act requirement #3: move the Zombie. If we
     // reach here, then we know the Player is not adjacent to the
