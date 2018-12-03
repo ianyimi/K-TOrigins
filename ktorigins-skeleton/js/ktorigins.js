@@ -683,7 +683,12 @@ class Game {
       // around the map -- the shock factor that only
       // K'tah! can deliver
       // [!] this.addAt
-      // ???
+      for (let i=0; i<this.nZoms; i++) {
+        let randomR = Math.floor(Math.random()*9),
+            randomC = Math.floor(Math.random()*13),
+            newZombie = new Zombie(randomR, randomC, this);
+        this.addAt(newZombie, randomR, randomC);
+      }
     }, 3000);
   }
 
