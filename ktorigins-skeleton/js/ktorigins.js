@@ -684,9 +684,15 @@ class Game {
       // K'tah! can deliver
       // [!] this.addAt
       for (let i=0; i<this.nZoms; i++) {
-        let randomR = Math.floor(Math.random()*9),
-            randomC = Math.floor(Math.random()*13),
+        let randomR,
+            randomC,
             newZombie = new Zombie(randomR, randomC, this);
+        do {
+          randomR = Math.floor(Math.random()*9);
+          randomC = Math.floor(Math.random()*13);
+        } while (this.getKtahbjectsAt(randomR, randomC).length !== 0);
+
+
         this.addAt(newZombie, randomR, randomC);
       }
     }, 3000);
