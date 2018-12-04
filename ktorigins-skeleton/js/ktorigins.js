@@ -340,24 +340,15 @@ class Player extends Ktahbject{
           // ready to have a wall placed in it!
           if (objsAtLoc.length === 0) {
             // TODO create a new Wall object at the given wallLoc
-<<<<<<< HEAD
-            let newWall = new Wall(wallLoc.r, WallLoc.c, this.game);
+            let newWall = new Wall(wallLoc.r, wallLoc.c, this.game, false);
 
             // TODO add the newWall to the game's ktahbjects:
             // [!] this.game.ktahbjects
-            // ???
-            this.game.addAt(newWall, r, c);
-=======
-            //let newWall = new Wall(wallLoc.r, WallLoc.c, this.game, permanent = false);
+            this.game.addAt(newWall, wallLoc.r, wallLoc.c);
 
-            // TODO add the newWall to the game's ktahbjects:
-            // [!] this.game.ktahbjects
-            //this.game.addAt(newWall, wallLoc.r, wallLoc.c);
-
->>>>>>> d5321626e404c37639e6fc5097a49fa8fee1e5d9
             // Uncomment, then leave this line as-is:
             triggerCooldown = true;
-          //}
+          }
           break;
       }
     }
@@ -372,7 +363,9 @@ class Player extends Ktahbject{
     // TODO simple: set this Player's cooldown to
     // the max of 0 and this.cooldown - 1
     // [!] Math.max
-     this.cooldown = -1;
+    if (this.cooldown > 0) {
+      this.cooldown--;
+    }
   }
 }
 
@@ -699,7 +692,7 @@ class Game {
           randomR = Math.floor(Math.random()*this.rows);
           randomC = Math.floor(Math.random()*this.cols);
         } while (this.getKtahbjectsAt(randomR, randomC).length !== 0);
-        
+
         let newZombie = new Zombie(randomR, randomC, this);
         this.addAt(newZombie, randomR, randomC);
       }
