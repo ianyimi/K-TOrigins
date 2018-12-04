@@ -338,16 +338,16 @@ class Player extends Ktahbject{
 
           // TODO if there's nothing in objsAtLoc, then it's clear and
           // ready to have a wall placed in it!
-          //if (objsAtLoc.length === 0) {
+          if (objsAtLoc.length === 0) {
             // TODO create a new Wall object at the given wallLoc
-            //let newWall = new Wall(wallLoc.r, WallLoc.c, this.game);
+            let newWall = new Wall(wallLoc.r, WallLoc.c, this.game);
 
             // TODO add the newWall to the game's ktahbjects:
             // [!] this.game.ktahbjects
             // ???
-
+            this.game.addAt(newWall, r, c);
             // Uncomment, then leave this line as-is:
-            //triggerCooldown = true;
+            triggerCooldown = true;
           //}
           break;
       }
@@ -363,7 +363,7 @@ class Player extends Ktahbject{
     // TODO simple: set this Player's cooldown to
     // the max of 0 and this.cooldown - 1
     // [!] Math.max
-    // this.cooldown = ???;
+     this.cooldown = -1;
   }
 }
 
