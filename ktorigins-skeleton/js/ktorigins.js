@@ -456,7 +456,9 @@ class Wall extends Ktahbject{
 
     // TODO: If the wall is NOT permanent (i.e., was made
     // by the architect) set its health to 5 here
-    // ???
+    if (this.permanent !== true) {
+      this.health = 5;
+    }
 
     // Leave these lines as-is:
     this.asset = "wall";
@@ -472,13 +474,15 @@ class Wall extends Ktahbject{
   act () {
     // TODO remove 1 health from this wall IF it is
     // not permanent
-    // ???
+    if (this.permanent !== true) {
+      this.health--;
+    }
 
     // TODO if this wall's health is <= 0, then remove
     // it from the game
-    // if ( ??? ) {
-      // [!] this.game.eraseAt
-    // }
+    if (this.health <= 0) {
+      this.game.eraseAt(this, this.r, this.c);
+    }
   }
 }
 
