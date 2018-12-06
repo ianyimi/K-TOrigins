@@ -34,6 +34,7 @@ let lobbyCont  = document.querySelector("#lobby-container"),
     assets = {
       images: {
         architect: "./assets/images/architect.png",
+        chemist: "./assets/images/chemist.png",
         zombie: "./assets/images/zombie.png",
         wall: "./assets/images/wall.png"
       }
