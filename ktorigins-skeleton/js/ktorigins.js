@@ -372,7 +372,7 @@ class Player extends Ktahbject{
     if (this.cooldown > 0) {
       this.cooldown--;
       updateCooldown(this.cooldown/5);
-    }
+    } else if (this.cooldown === 0) { cooldownTimer.value = 100; }
   }
 }
 
