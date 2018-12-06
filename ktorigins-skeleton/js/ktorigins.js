@@ -25,6 +25,7 @@ let lobbyCont  = document.querySelector("#lobby-container"),
     // Game Selectors
     timeLeft   = document.querySelector("#game-timer"),
     healthLeft = document.querySelector("#game-health"),
+    cooldownTimer = document.querySelector("#ability-cooldown"),
     currRound  = document.querySelector("#game-round"),
     mazeCont   = document.querySelector("#game-maze"),
 
@@ -134,6 +135,10 @@ function endGameLoad () {
 
 function updateHealth (percentage) {
   healthLeft.value = Math.floor(percentage * 100);
+}
+
+function updateCooldown (percentage) {
+  cooldownTimer.value = Math.floor(percentage * 100);
 }
 
 function updateTimer (percentage) {
@@ -365,6 +370,7 @@ class Player extends Ktahbject{
     // [!] Math.max
     if (this.cooldown > 0) {
       this.cooldown--;
+      updateCooldown(this.cooldown/5);
     }
   }
 }
