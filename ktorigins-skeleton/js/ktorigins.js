@@ -402,7 +402,7 @@ class Zombie extends Ktahbject{
    * 3) If the player is NOT adjacent, the Zombie moves in
    *    a random direction: up, down, left, or right; if the
    *    direction chosen is blocked (by a wall or zombie),
-   *    then this Zombie does nothing for this tick
+   *    then this Zombie does nothing for this tick ok
    */
   act () {
     if (this.health <= 0) {
