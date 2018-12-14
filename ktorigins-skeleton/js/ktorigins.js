@@ -356,6 +356,13 @@ class Player extends Ktahbject{
             triggerCooldown = true;
           }
           break;
+        case "chemist":
+          let trapLoc = {r: this.r + this.facing.r, c: this.c + this.facing.c},
+              objsAtLoc = this.game.getKtahbjectsAt(wallLoc.r, wallLoc.c);
+
+          if (objsAtLoc.length === 0) {
+            let newTrap
+          }
       }
     }
     if (triggerCooldown) { this.cooldown += this.game.cooldown; }
