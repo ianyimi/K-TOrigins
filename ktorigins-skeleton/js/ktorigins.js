@@ -366,8 +366,6 @@ class Player extends Ktahbject{
 
             this.game.addAt(newTrap, this.trapLoc.r, this.trapLoc.c);
 
-
-
             triggerCooldown = true;
           }
           break;
