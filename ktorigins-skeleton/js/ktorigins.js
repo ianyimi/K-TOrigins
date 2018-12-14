@@ -36,7 +36,8 @@ let lobbyCont  = document.querySelector("#lobby-container"),
         architect: "./assets/images/architect.png",
         pioneer: "./assets/images/pioneer.png",
         zombie: "./assets/images/zombie.png",
-        wall: "./assets/images/wall.png"
+        wall: "./assets/images/wall.png",
+        trap: "./assets/images/trap.png"
       }
     },
 
