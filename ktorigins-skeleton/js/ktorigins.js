@@ -460,6 +460,9 @@ class Zombie extends Ktahbject{
     this.moveTo(toMoveTo.r, toMoveTo.c);
     // ???
   }
+  getTrapped () {
+      this.health = 0;
+  }
 }
 
 
@@ -540,6 +543,12 @@ class Trap extends Ktahbject {
     // it from the game
     if (this.health <= 0) {
       this.game.eraseAt(this, this.r, this.c);
+    }
+    let trapped = this.game.getKtahbjectsAt(this.r,this.c);
+    for (let k of trapped) {
+      if (k instanceof Zombie) {
+        k.getTrapped();
+      }
     }
   }
 }
