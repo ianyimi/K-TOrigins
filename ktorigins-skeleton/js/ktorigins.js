@@ -1,10 +1,10 @@
 /** ==================================================
  *  CMSI 185 - Final Project - K'torigins
  *  ==================================================
- *  Author 1: [YOUR NAME HERE]
- *  UID 1:    [YOUR UID HERE]
- *  Author 2: [YOUR NAME HERE] // Only if working in
- *  UID 2:    [YOUR UID HERE]  // group
+ *  Author 1: [Isaiah Anyimi]
+ *  UID 1:    [923818673]
+ *  Author 2: [Raul Rodriguez] // Only if working in
+ *  UID 2:    [937537005]  // group
  */
 
 
