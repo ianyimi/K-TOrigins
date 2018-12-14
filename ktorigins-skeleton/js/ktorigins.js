@@ -272,7 +272,7 @@ class Ktahbject {
     // the target is an empty location; if it is, then
     // we can move to the requested spot; if it isn't, then
     // do nothing!
-    if (target.length === 0 || target instanceof Trap === true) {
+    if (target.length === 0) {
       //Uncomment and leave the following two lines as-is:
       this.game.addAt(this, row, col);
       this.game.eraseAt(this, this.r, this.c);
@@ -357,13 +357,18 @@ class Player extends Ktahbject{
             triggerCooldown = true;
           }
           break;
-        //case "pioneer":
-          //let trapLoc = {r: this.r + this.facing.r, c: this.c + this.facing.c},
-            //  objsAtLoc = this.game.getKtahbjectsAt(trapLoc.r, trapLoc.c);
+        case "pioneer":
+          let trapLoc = {r: this.r + this.facing.r, c: this.c + this.facing.c},
+              objsAtLoc2 = this.game.getKtahbjectsAt(trapLoc.r, trapLoc.c);
 
-          //if (objsAtLoc.length === 0) {
-            //let newTrap = new Trap(trapLoc.r, trapLoc.c, this.game, false);
-          //}
+          if (objsAtLoc2.length === 0) {
+            let newTrap = new Trap(trapLoc.r, trapLoc.c, this.game, false);
+
+            this.game.addAt(newTrap, trapLoc.r, trapLoc.c);
+
+            triggerCooldown = true;
+          }
+          break;
       }
     }
     if (triggerCooldown) { this.cooldown += this.game.cooldown; }
@@ -502,18 +507,30 @@ class Wall extends Ktahbject{
 }
 
 class Trap extends Ktahbject {
-  constructor (r, c, game, permanent=true) {
-    super(r, c, game);
-    this.permanent = permanent;
-    this.asset = "trap";
-    if (this.permanent = true) {
+  constructor (r, c, game, permanent = true) {
+    // TODO Since Wall extends Ktahbject, call the superclass'
+    // constructor with the same parameters here:
+    super(r, c, game)
+
+    // TODO: If the wall is NOT permanent (i.e., was made
+    // by the architect) set its health to 5 here
+    if (this.permanent !== true) {
       this.health = 5;
     }
+
+    // Leave these lines as-is:
+    this.asset = "trap";
+    this.permanent = permanent;
   }
-  act() {
+  act () {
+    // TODO remove 1 health from this wall IF it is
+    // not permanent
     if (this.permanent !== true) {
       this.health--;
     }
+
+    // TODO if this wall's health is <= 0, then remove
+    // it from the game
     if (this.health <= 0) {
       this.game.eraseAt(this, this.r, this.c);
     }
