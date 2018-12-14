@@ -272,7 +272,7 @@ class Ktahbject {
     // the target is an empty location; if it is, then
     // we can move to the requested spot; if it isn't, then
     // do nothing!
-    if (target.length === 0) {
+    if (target.length === 0 || target[0].asset === "trap") {
       //Uncomment and leave the following two lines as-is:
       this.game.addAt(this, row, col);
       this.game.eraseAt(this, this.r, this.c);
@@ -361,10 +361,13 @@ class Player extends Ktahbject{
           let trapLoc = {r: this.r + this.facing.r, c: this.c + this.facing.c},
               objsAtLoc2 = this.game.getKtahbjectsAt(trapLoc.r, trapLoc.c);
 
+
           if (objsAtLoc2.length === 0) {
             let newTrap = new Trap(trapLoc.r, trapLoc.c, this.game, false);
 
             this.game.addAt(newTrap, trapLoc.r, trapLoc.c);
+
+
 
             triggerCooldown = true;
           }
@@ -445,6 +448,7 @@ class Zombie extends Ktahbject{
     if (activeP5.dist(r, c, this.game.player.r, this.game.player.c) <= 1) {
       this.game.player.getEaten();
     }
+
 
     // TODO Satisfy act requirement #3: move the Zombie. If we
     // reach here, then we know the Player is not adjacent to the
