@@ -302,6 +302,7 @@ class Player extends Ktahbject{
     this.asset = this.character = this.game.character;
     this.facing = {r: -1, c: 0}; // Default: facing up
     this.cooldown = 0;
+
   }
 
   /*
@@ -358,15 +359,19 @@ class Player extends Ktahbject{
           }
           break;
         case "pioneer":
-          let objsAtLoc2 = this.game.getKtahbjectsAt(trapLoc.r, trapLoc.c);
-          this.trapLoc = {r: this.r + this.facing.r, c: this.c + this.facing.c},
+          let trapLoc = {r: this.r + this.facing.r, c: this.c + this.facing.c},
+              objsAtLoc2 = this.game.getKtahbjectsAt(trapLoc.r, trapLoc.c);
 
           if (objsAtLoc2.length === 0) {
-            let newTrap = new Trap(this.trapLoc.r, this.trapLoc.c, this.game, false);
+            let newTrap = new Trap(trapLoc.r, trapLoc.c, this.game, false);
 
-            this.game.addAt(newTrap, this.trapLoc.r, this.trapLoc.c);
+            this.game.addAt(newTrap, trapLoc.r, trapLoc.c);
 
             triggerCooldown = true;
+
+            if (newTrap.r === this.game.zombie.r && newTrap.c === this.game.zombie.c) {
+              this.game.zombie.health = 0;
+            }
           }
           break;
       }
@@ -445,9 +450,6 @@ class Zombie extends Ktahbject{
     // [!] activeP5.dist  // p5's dist method!
     if (activeP5.dist(r, c, this.game.player.r, this.game.player.c) <= 1) {
       this.game.player.getEaten();
-    }
-    if (activeP5.dist(r, c, this.game.player.trapLoc.r, this.game.player.trapLoc.c) <= 0) {
-      this.health = 0;
     }
 
 
