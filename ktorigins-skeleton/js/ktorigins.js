@@ -356,12 +356,12 @@ class Player extends Ktahbject{
             triggerCooldown = true;
           }
           break;
-        case "chemist":
+        case "pioneer":
           let trapLoc = {r: this.r + this.facing.r, c: this.c + this.facing.c},
-              objsAtLoc = this.game.getKtahbjectsAt(wallLoc.r, wallLoc.c);
+              objsAtLoc = this.game.getKtahbjectsAt(trapLoc.r, trapLoc.c);
 
           if (objsAtLoc.length === 0) {
-            let newTrap
+            let newTrap = new
           }
       }
     }
@@ -500,6 +500,24 @@ class Wall extends Ktahbject{
   }
 }
 
+class Trap extends Ktahbject {
+  constructor (r, c, game, permanent=true, state) {
+    super(r, c, game);
+    this.permanent = permanent;
+    this.asset = "trap";
+    if (this.permanent = permanent) {
+      this.health = 5;
+    }
+  }
+  act() {
+    if (this.permanent !== true) {
+      this.health--;
+    }
+    if (this.health <= 0) {
+      this.game.eraseAt(this, this.r, this.c);
+    }
+  }
+}
 
 // ---------------------------------------------------
 // GAME CLASS CONFIGURATION
