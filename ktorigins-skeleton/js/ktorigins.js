@@ -272,7 +272,7 @@ class Ktahbject {
     // the target is an empty location; if it is, then
     // we can move to the requested spot; if it isn't, then
     // do nothing!
-    if (target.length === 0) {
+    if (target.length === 0 || target instanceof Trap === true) {
       //Uncomment and leave the following two lines as-is:
       this.game.addAt(this, row, col);
       this.game.eraseAt(this, this.r, this.c);
@@ -357,13 +357,13 @@ class Player extends Ktahbject{
             triggerCooldown = true;
           }
           break;
-        case "pioneer":
-          let trapLoc = {r: this.r + this.facing.r, c: this.c + this.facing.c},
-              objsAtLoc = this.game.getKtahbjectsAt(trapLoc.r, trapLoc.c);
+        //case "pioneer":
+          //let trapLoc = {r: this.r + this.facing.r, c: this.c + this.facing.c},
+            //  objsAtLoc = this.game.getKtahbjectsAt(trapLoc.r, trapLoc.c);
 
-          if (objsAtLoc.length === 0) {
-            let newTrap = new
-          }
+          //if (objsAtLoc.length === 0) {
+            //let newTrap = new Trap(trapLoc.r, trapLoc.c, this.game, false);
+          //}
       }
     }
     if (triggerCooldown) { this.cooldown += this.game.cooldown; }
@@ -502,11 +502,11 @@ class Wall extends Ktahbject{
 }
 
 class Trap extends Ktahbject {
-  constructor (r, c, game, permanent=true, state) {
+  constructor (r, c, game, permanent=true) {
     super(r, c, game);
     this.permanent = permanent;
     this.asset = "trap";
-    if (this.permanent = permanent) {
+    if (this.permanent = true) {
       this.health = 5;
     }
   }
