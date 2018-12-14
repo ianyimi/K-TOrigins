@@ -358,14 +358,13 @@ class Player extends Ktahbject{
           }
           break;
         case "pioneer":
-          let trapLoc = {r: this.r + this.facing.r, c: this.c + this.facing.c},
-              objsAtLoc2 = this.game.getKtahbjectsAt(trapLoc.r, trapLoc.c);
-
+          let objsAtLoc2 = this.game.getKtahbjectsAt(trapLoc.r, trapLoc.c);
+          this.trapLoc = {r: this.r + this.facing.r, c: this.c + this.facing.c},
 
           if (objsAtLoc2.length === 0) {
-            let newTrap = new Trap(trapLoc.r, trapLoc.c, this.game, false);
+            let newTrap = new Trap(this.trapLoc.r, this.trapLoc.c, this.game, false);
 
-            this.game.addAt(newTrap, trapLoc.r, trapLoc.c);
+            this.game.addAt(newTrap, this.trapLoc.r, this.trapLoc.c);
 
 
 
@@ -421,6 +420,7 @@ class Zombie extends Ktahbject{
    *    then this Zombie does nothing for this tick ok
    */
   act () {
+
     if (this.health <= 0) {
       // TODO Satisfy act requirement #1:
       // If this Zombie is dead, then remove it from the game,
@@ -447,6 +447,9 @@ class Zombie extends Ktahbject{
     // [!] activeP5.dist  // p5's dist method!
     if (activeP5.dist(r, c, this.game.player.r, this.game.player.c) <= 1) {
       this.game.player.getEaten();
+    }
+    if (activeP5.dist(r, c, this.game.player.trapLoc.r, this.game.player.trapLoc.c) <= 0) {
+      this.health = 0;
     }
 
 
