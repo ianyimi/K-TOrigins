@@ -113,8 +113,8 @@ input[type=radio]:checked + label {
   background-size: contain;
 }
 
-#char-chemist + label {
-  background-image: url("../assets/images/chemist.png");
+#char-pioneer + label {
+  background-image: url("../assets/images/pioneer.png");
   background-size: contain;
 }
 
